@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: lightcyan;
+}
+
+h1 {
+    color: navy;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    background-image: url("images/peacock.gif");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    animation-duration: 6s;
+    animation-play-state: running;
+    animation: loopBackground 30s infinite;
+    font-size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    user-select: none;
+    color: transparent;
+    border: 2px solid navy;
+}
+
+@keyframes loopBackground {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+        background-position: 50% 50%;
+      }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+.card.flipped {
+    background-image: none; 
+    background-color: lightblue; 
+    color: black !important;
+}
+
+@keyframes winAnimation {
+    0% { transform: translate(0, 0) rotate(0); }
+    25% { transform: translate(-10px, 10px) rotate(-5deg); }
+    50% { transform: translate(10px, -10px) rotate(5deg); }
+    75% { transform: translate(-10px, 10px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+}
+
+.shuffle {
+    animation: shuffleCards 0.5s ease-in-out infinite alternate;
+}
+
+.win {
+    animation: winAnimation 0.5s ease-in-out infinite;
+}
+
+@keyframes dropCards {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(50px); opacity: 0.8; }
+    100% { transform: translateY(200px); opacity: 0; }
+}
+
+.drop {
+    animation: dropCards 2s ease-in-out forwards;
+}
+
+@keyframes dropCards {
+    0% { transform: translateY(0) rotate(0); opacity: 1; }
+    50% { transform: translateY(100px) rotate(15deg); opacity: 0.8; }
+    100% { transform: translateY(500px) rotate(30deg); opacity: 0; }
+}
