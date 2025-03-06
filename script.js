@@ -53,17 +53,17 @@ class MatchCardGame {
         if (this.matchedCards.length === this.symbols.length) {
             setTimeout(() => {
                 alert("You won! 🎉");
-    
-                document.querySelectorAll('.card').forEach(card => card.classList.add("drop"));
-    
-                setTimeout(() => {
-                    document.getElementById("gameBoard").innerHTML = '';
-                }, 2000);
-    
+                
+                // Add victory animation to each card with a slight delay
+                document.querySelectorAll('.card').forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add("victory");
+                    }, index * 100); // Stagger the animation
+                });
+
                 setTimeout(() => {
                     this.restartGame();
-                }, 3000);
-    
+                }, 2500);
             }, 300);
         }
     }
